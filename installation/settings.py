@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ugmhmd1jqbnp=f*_(2#+*df(c5!+b24mrl4i*u1dltnr!7(^oo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dj4eAmir.pythonanywhere.com']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'home'
 ]
 
 MIDDLEWARE = [
@@ -118,6 +119,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -126,7 +130,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # default static files settings for PythonAnywhere.
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
-MEDIA_ROOT = '/home/dj4eAmir/installation/installation/media'
-MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/dj4eAmir/installation/installation/static'
-STATIC_URL = '/static/'
+# MEDIA_ROOT = '/home/dj4eAmir/installation/installation/media'
+# MEDIA_URL = '/media/'
+# STATIC_ROOT = '/home/dj4eAmir/installation/installation/static'
+# STATIC_URL = '/static/'
