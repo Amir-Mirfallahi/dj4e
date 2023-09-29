@@ -7,5 +7,8 @@
 
             ... 17fe9b ...
         </p>
+    {% for question in questions %}
+        <a href="{% url 'detail' question_id=question.id %}">{{ question.question }}</a>
+    {% endfor %}
     </body>
 </html>

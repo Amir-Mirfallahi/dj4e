@@ -4,7 +4,7 @@ from .models import *
 
 
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'questions': Question.objects.all()})
 
 
 def css_assignment(request):
