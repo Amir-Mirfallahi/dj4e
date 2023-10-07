@@ -1,32 +1,20 @@
-from django.http import HttpResponse
 from django.shortcuts import render
-from .models import *
+from django.views import View
+from django.conf import settings
+
+# Create your views here.
+
+# This is a little complex because we need to detect when we are
+# running in various configurations
 
 
-def home(request):
-    questions = Question.objects.all()
-    print(questions)
-    return render(request, 'home.html', {'questions': questions})
-
-
-def css_assignment(request):
-    return render(request, 'css_assignment.html')
-
-
-def owner(request):
-    return HttpResponse("Hello, world. 542fc94a is the polls index.")
-
-
-def detail(request, question_id):
-    question = Question.objects.get(pk=question_id)
-    return HttpResponse(question)
-
-
-def results(request, question_id):
-    answer = Answer.objects.get(question_id=question_id)
-    return HttpResponse(answer)
-
-
-def vote(request, question_id):
-    answer = Answer.objects.get(question_id=question_id)
-    return HttpResponse(answer.votes)
+class HomeView(View):
+    def get(self, request):
+        print(request.get_host())
+        host = request.get_host()
+        islocal = host.find('localhost') >= 0 or host.find('127.0.0.1') >= 0
+        context = {
+            'installed': settings.INSTALLED_APPS,
+            'islocal': islocal
+        }
+        return render(request, 'home/main.html', context)
